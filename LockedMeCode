@@ -18,8 +18,8 @@ public class LockedMePrototype {
 		List<String> al = Arrays.asList(contents);
 
 		Scanner ssc = new Scanner(System.in); // System.in is a standard input stream.
-		System.out.println("     Welcom to \n" + "     LockedMen\n");
-		System.out.println("This app made by \n Mohammad Alzahem");
+		System.out.println("     Welcome to \n" + "     LockedMen\n");
+		System.out.println("This app made by \n Mohammad Alzahem\n\n");
 		// alakaz while(true) {
 		while (opt != 3) {
 			System.out.print("1 display the current file names\n");
