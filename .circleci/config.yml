@@ -1,26 +1,136 @@
-# Use the latest 2.1 version of CircleCI pipeline process engine.
-# See: https://circleci.com/docs/2.0/configuration-reference
-version: 2.1
+package echannelstask;
+import java.io.File;
+import java.io.IOException;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Scanner;
 
-# Define a job to be invoked later in a workflow.
-# See: https://circleci.com/docs/2.0/configuration-reference/#jobs
-jobs:
-  say-hello:
-    # Specify the execution environment. You can specify an image from Dockerhub or use one of our Convenience Images from CircleCI's Developer Hub.
-    # See: https://circleci.com/docs/2.0/configuration-reference/#docker-machine-macos-windows-executor
-    docker:
-      - image: cimg/base:stable
-    # Add steps to the job
-    # See: https://circleci.com/docs/2.0/configuration-reference/#steps
-    steps:
-      - checkout
-      - run:
-          name: "Say hello"
-          command: "echo Hello, World!"
 
-# Invoke jobs via workflows
-# See: https://circleci.com/docs/2.0/configuration-reference/#workflows
-workflows:
-  say-hello-workflow:
-    jobs:
-      - say-hello
+public class LockedMePrototype {
+	public static void main(String args[])
+	{
+		
+		int terminate = 1;
+		int rtn = 1;
+		do {
+		if(terminate == 1) {
+			System.out.println("     Welcom to \n" + "     LockedMen\n");
+			System.out.println("This app made by \n Mohammad Alzahem");
+			System.out.print("1 display the current file names\n");
+			System.out.print("2 user interface\n");
+			System.out.print("3 close application\n");
+			System.out.print("Enter an option: ");
+			Scanner ssc= new Scanner(System.in); //System.in is a standard input stream.
+			int opt= ssc.nextInt(); //reads integer
+			
+			String path = "C:/Users/80090/Desktop/LockedMe/";
+			File folder = new File(path);
+		
+			
+			switch(opt) {
+			case 1:
+				
+				String contents[] = folder.list();
+				 List<String> al = Arrays.asList(contents);
+				 al.sort(null);
+				 System.out.println(al);
+				 System.exit(terminate);
+				 break;
+				 
+			case 2:
+				
+				System.out.print("\nYou choose option 2 \n");
+				System.out.print("1 Add a file\n");
+				System.out.print("2 Delete a file\n");
+				System.out.print("3 Search a file\n");
+				System.out.print("4 return to main menu\n");
+				Scanner scc= new Scanner(System.in);
+				int opt2 = scc.nextInt();
+				
+				if(opt2 == 1){
+					
+					System.out.print("Enter File name: ");
+					Scanner sc=new Scanner(System.in);
+					String fileName = sc.nextLine();
+					File file = new File(path + fileName + ".txt");
+
+					try {
+						if(file.createNewFile()) {
+							System.out.println("File got created");
+						}else {
+							System.out.println("File not created");
+						}
+					} catch (IOException e) {
+						e.printStackTrace();
+					};
+					
+					
+				}else if(opt2 == 2) {
+					
+					System.out.println("Type the name of the file you want to be deleted");
+					Scanner scan = new Scanner(System.in);
+					String FileName = scan.next();
+					  File file
+			            = new File("C:/Users/80090/Desktop/LockedMe/"+FileName+".txt");
+			 
+			        if (file.delete()) {
+			            System.out.println("File deleted successfully");
+			        }
+			        else {
+			            System.out.println("Failed to delete the file");
+			        }
+				}else if(opt2 == 3) {
+					
+					System.out.println("Enter the directory path: ");
+				      Scanner sc = new Scanner(System.in);
+				      String pathStr = sc.next();        
+				      System.out.println("Enter the desired file name: ");
+				      String file = sc.next();
+				      System.out.println(file);      
+				      File dir = new File(pathStr);
+				      String[] list = dir.list();
+				      System.out.println(Arrays.toString(list));
+				      boolean flag = false;      
+				      for (int i = 0; i < list.length; i++) {
+				         if(file.equals(list[i])){
+				            flag = true;
+				         }
+				      }        
+				      if(flag){
+				         System.out.println("File Found");
+				      }else{
+				         System.out.println("File Not Found");
+				      }
+					
+				}else if(opt2 == 4){
+					rtn = 4;
+				}
+				
+				break;
+			case 3: 
+				terminate = 3;
+				System.out.println("App closed, and terminated.");
+				break;
+			
+				
+				}
+				}else if(terminate == 3){
+					System.exit(terminate);
+				}
+
+		
+		}while( rtn == 4  );
+	}
+}
+
+	
+
+		
+	 
+
+			
+
+	
+		
+		
+
