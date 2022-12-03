@@ -9,6 +9,7 @@ import java.util.Scanner;
 public class LockedMePrototype {
 	public static void main(String args[]) {
 
+		try {
 		int terminate = 1;
 		int rtn = 1;
 		int opt = 0;
@@ -20,7 +21,7 @@ public class LockedMePrototype {
 		Scanner ssc = new Scanner(System.in); // System.in is a standard input stream.
 		System.out.println("     Welcome to \n" + "     LockedMen\n");
 		System.out.println("This app made by \n Mohammad Alzahem\n\n");
-		// alakaz while(true) {
+		
 		while (opt != 3) {
 			System.out.print("1 display the current file names\n");
 			System.out.print("2 user interface\n");
@@ -97,9 +98,14 @@ public class LockedMePrototype {
 					} else {
 						System.out.println("File Not Found\n");
 					}
+					
 
 				} else if (opt2 == 4) {
 					rtn = 4;
+				}else {
+					try {
+						System.err.println("input a valid choice please.");
+					}finally {};
 				}
 
 				break;
@@ -107,9 +113,30 @@ public class LockedMePrototype {
 				terminate = 3;
 				System.out.println("App closed, and terminated.");
 				break;
-
+				
+			default:{
+				
+					try {
+						System.err.println("input a valid choice please.");
+					}
+					
+			        //throw new NullPointerException(" input a valid choice, please ");
+			        catch (Exception e) {
+			        System.err.println("input a valid choice please.");
+			        
+			        
+			        }
+			        
+			
+			
+					finally{
+					}
+			}
 			}
 
 		}
-	}
+			
+		
+		}finally {};
+		}
 }
